@@ -1,0 +1,19 @@
+{
+    "name": "elfarqy/uikit3-bundle",
+    "type": "symfony-plugin",
+    "version": "1.0",
+    "require": {
+        "twig/extensions": "^1.5"
+    },
+    "authors": [
+        {
+            "name": "elfarqy",
+            "email": "alvianthelfarqy@gmail.com"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "Elfarqy\\Uikit3Bundle\\": "src/"
+        }
+    }
+}
