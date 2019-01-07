@@ -1,2 +1,38 @@
 {%- extends "form_div_layout.html.twig" -%}
+{# Based on https://getuikit.com/assets/uikit/tests/form.html #}
+{% block form_row -%}
+    {%- set widget_attr = {} -%}
+    {%- if help is not empty -%}
+        {%- set widget_attr = {attr: {'aria-describedby': id ~"_help"}} -%}
+    {%- endif -%}
+    <div class="uk-margin{% if (not compound or force_error|default(false)) and not valid %} has-error{% endif %}">
+        {{- form_label(form) -}}
+        {{- form_widget(form, widget_attr) -}}
+        {{- form_help(form) -}}
+        {{- form_errors(form) -}}
+    </div>
+{%- endblock form_row %}
 
+{% block form_label -%}
+    {%- set label_attr = label_attr|merge({class: (label_attr.class|default('') ~ ' uk-form-label')|trim}) -%}
+    {{- parent() -}}
+{%- endblock form_label %}
+
+{% block form_widget_simple -%}
+    <div class="uk-form-controls">
+        {% if type is not defined or type not in ['file', 'hidden'] %}
+            {%- set attr = attr|merge({class: (attr.class|default('') ~ ' uk-input')|trim}) -%}
+        {% endif %}
+        {{- parent() -}}
+    </div>
+{%- endblock form_widget_simple %}
+
+{% block textarea_widget -%}
+    {% set attr = attr|merge({class: (attr.class|default('') ~ ' uk-textarea')|trim}) %}
+    {{- parent() -}}
+{%- endblock textarea_widget %}
+
+{% block button_widget -%}
+    {%- set attr = attr|merge({class: (attr.class|default('uk-button-primary') ~ ' uk-button')|trim}) -%}
+    {{- parent() -}}
+{%- endblock button_widget %}
