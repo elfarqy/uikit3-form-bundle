@@ -1,8 +1,0 @@
-services:
-    r_uikit.twig_extension.datepattern:
-        class: elfarqy\Uikit3\Twig\DateformatExtension
-        arguments:
-            - '@twig'
-        tags:
-            - { name: twig.extension }
-
