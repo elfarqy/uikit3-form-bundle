@@ -1,0 +1,8 @@
+###> symfony/framework-bundle ###
+/vendor/
+###< symfony/framework-bundle ###
+.idea/
+
+###> symfony/webpack-encore-bundle ###
+/node_modules/
+###< symfony/webpack-encore-bundle ###
