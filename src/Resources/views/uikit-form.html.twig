@@ -8,7 +8,7 @@
     <div class="uk-margin{% if (not compound or force_error|default(false)) and not valid %} has-error{% endif %}">
         {{- form_label(form) -}}
         {{- form_widget(form, widget_attr) -}}
-        {{- form_help(form) -}}
+        {#{{- form_help(form) -}} uikit doesn't support help block?#}
         {{- form_errors(form) -}}
     </div>
 {%- endblock form_row %}
@@ -36,3 +36,8 @@
     {%- set attr = attr|merge({class: (attr.class|default('uk-button-primary') ~ ' uk-button')|trim}) -%}
     {{- parent() -}}
 {%- endblock button_widget %}
+
+{% block choice_widget_collapsed -%}
+    {%- set attr = attr|merge({class: (attr.class|default('') ~ ' uk-select')|trim}) -%}
+    {{- parent() -}}
+{%- endblock choice_widget_collapsed %}
